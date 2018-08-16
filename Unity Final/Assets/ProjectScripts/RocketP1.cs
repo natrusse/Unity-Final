@@ -7,11 +7,13 @@ public class RocketP1 : MonoBehaviour {
 
     public float despawnTime = 5;
     private float timer = 0;
+    private Manager M;
 
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start ()
+    {
+        M = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -32,6 +34,7 @@ public class RocketP1 : MonoBehaviour {
             Debug.Log("Enemy Player is dead.");
             Destroy(col.collider.gameObject);
             Destroy(gameObject);
+            M.P2Death();
         }
         else if (col.collider.gameObject.tag == "Rocket")
         {
